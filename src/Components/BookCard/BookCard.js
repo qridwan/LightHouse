@@ -4,53 +4,52 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
     root: {
-      maxWidth: 345,
+      maxWidth: 500,
+      maxHeight: 800
     },
-  });
+    margin: {
+      margin: theme.spacing(1),
+      fontWeight: 800,
+      color: 'green'
+    }
+  }));
 const BookCard = ({info}) => {
     const classes = useStyles();
-    
-    const handleDelete= ( id) =>{
-        fetch(`http://localhost:4000/deleteEvent/${id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((result) => {
-              if (result) {
-                console.log("Event Deleted");
-window.location.reload(false);
-              }
-  
-            })
-    }
+const handleBuy = (id) => {
+console.log(id)
+}
     return (
-        <div className="col-lg-4 col-md-6 col-sm-8 p-2">
+        <div className="col-lg-3 col-md-4 col-sm-5 p-2">
 <Card className={classes.root}>
       <CardActionArea  >
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="350"
-          width="100%"
           image={info.image}
-          title="Contemplative Reptile"
+          title="Book Name"
+          height="400px"
+          className=""
         />
         <CardContent>
-          <Typography gutterBottom variant="p" component="h5">
+          <Typography gutterBottom variant="h6" component="p">
             {info.name}
           </Typography>
-          <Typography gutterBottom variant="h6" component="p">
+          <Typography gutterBottom variant="p" component="p">
             {info.author}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions >
-        <Button onClick={() => {handleDelete(info._id)}} size="small" color="primary">
-          Buy Now
+      <Button size="small" className={classes.margin}>
+          $ {info.price}
         </Button>
+        <Button size="medium" onClick={() =>{handleBuy(info._id)}} color="primary" variant="outlined" >
+       <Link style={{textDecoration: 'none'}} to={`/checkout/${info._id}`}> Buy Now </Link>
+        </Button> 
       </CardActions>
     </Card>
 </div>

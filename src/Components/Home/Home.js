@@ -13,8 +13,8 @@ const Home = () => {
     },[])
     return (
         <>
-    <div className="container d-flex justify-content-center">
-    <div className="row">
+    <div className="container ">
+    <div className="row d-flex justify-content-center">
             {books.map(obj => <BookCard info={obj} key={obj._id}></BookCard>)}
         </div>
     </div>

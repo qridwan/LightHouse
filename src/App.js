@@ -1,26 +1,37 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Route, Switch
 } from "react-router-dom";
 import AddBook from "./Components/AddBook/AddBook";
+import CheckOut from "./Components/CheckOut/CheckOut";
 import Home from "./Components/Home/Home";
+import Login from "./Components/Login/Login";
+import Navigation from "./Components/Navigation/Navigation";
+import PrivateRoute from "./Components/PricvateRoute/PrivateRoute";
 
+export const UserContext = createContext()
 
 function App() {
-
+  const [user, setUser] = useState({
+    isSigned: false,
+    name: "",
+    email: "",
+    photo: ""
+  });
   return (
+    <UserContext.Provider value={[user, setUser]}>
     <Router>
       <div>
-       {/* <Nav/> */}
+       <Navigation/>
 
         <Switch>
           <Route path="/login">
-            {/* <Login/> */}
+            <Login />
           </Route>
-          <Route path="/event">
-            {/* <Event/> */}
-          </Route>
+          <PrivateRoute path="/checkout/:id">
+            <CheckOut/>
+          </PrivateRoute>
           <Route path="/add-book">
             <AddBook /> 
           </Route>
@@ -30,6 +41,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </UserContext.Provider>
   );
 }
 
