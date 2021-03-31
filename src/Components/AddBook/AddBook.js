@@ -61,11 +61,11 @@ const [bookAdded, setbookAdded] = useState(false);
             }}>Add Book </div></>
              : 
             <form className="" onSubmit={handleSubmit(onSubmit)}>
-    <input className="form-control" name="name" placeholder="name" ref={register} />
-    <input className="form-control" name="author" placeholder="author" ref={register} />
-    <input className="form-control" name="cost" placeholder="price" ref={register} />
+    <input className="form-control" name="name" placeholder="name" ref={register} required />
+    <input className="form-control" name="author" placeholder="author" ref={register} required/>
+    <input className="form-control" name="cost" placeholder="price" ref={register} required />
     <br />
-    <input className="text-light form-control-file"  name="exampleRequired" type="file" onChange={handleImage} />
+    <input className="text-light form-control-file"  name="exampleRequired" type="file" onChange={handleImage} required/>
     <br /> <input className="form-control bg-primary text-light" type="submit" />
   </form>
         }

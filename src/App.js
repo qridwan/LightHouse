@@ -4,10 +4,12 @@ import {
   Route, Switch
 } from "react-router-dom";
 import AddBook from "./Components/AddBook/AddBook";
+import Admin from "./Components/Admin/Admin";
 import CheckOut from "./Components/CheckOut/CheckOut";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Navigation from "./Components/Navigation/Navigation";
+import Order from "./Components/Order/Order";
 import PrivateRoute from "./Components/PricvateRoute/PrivateRoute";
 
 export const UserContext = createContext()
@@ -35,7 +37,13 @@ function App() {
           <Route path="/add-book">
             <AddBook /> 
           </Route>
-          <Route path="/">
+          <Route path="/order">
+            <Order /> 
+          </Route>
+          <PrivateRoute path="/admin">
+            <Admin /> 
+          </PrivateRoute>
+          <Route exact path="/">
             <Home/>
           </Route>
         </Switch>

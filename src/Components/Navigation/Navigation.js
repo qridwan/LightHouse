@@ -3,8 +3,9 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 import logo from '../../images/logo/logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Navigation = () => {
   const classes = useStyles();
+  const [user, setUser] = useContext(UserContext);
   return (
     <div className={classes.root}>
       <AppBar
@@ -37,8 +39,7 @@ const Navigation = () => {
             </Link>
           </Typography>
           <Button color="inherit"><Link className="text-light" to="/">Home</Link></Button>
-          <Button color="inherit"><Link className="text-light" to="/add-book">Admin</Link></Button>
-          <Button color="inherit"><Link className="text-light" to="/checkout">Checkout</Link></Button>
+          <Button color="inherit"><Link className="text-light" to="/admin">Admin</Link></Button>
           <Button color="inherit"><Link className="text-light" to="/order">ORDER</Link></Button>
           <Button color="inherit"><Link className="text-light" to="/login">Login</Link></Button>
           <img src={logo} alt="lg" height="35" />
