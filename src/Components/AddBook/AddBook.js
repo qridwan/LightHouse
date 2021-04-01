@@ -16,7 +16,7 @@ const [bookAdded, setbookAdded] = useState(false);
      image: imageUrl
  }
  console.log(BookData)
- const url = `http://localhost:4000/addBook`;
+ const url = `https://lighthouse-222.herokuapp.com/addBook`;
     
  fetch(url, {
    method: 'POST', 
@@ -49,27 +49,29 @@ const [bookAdded, setbookAdded] = useState(false);
       });
   };
   return (
-    <div className="bg-info text-center p-5">
+    <div className=" text-center p-4">
       {
-          !bookAdded && <h1 className="text-warning">Add New Book!!</h1>
+          !bookAdded && <h1 className="text-primary font-weight-bolder">Add New Book!</h1>
       }
       <div className="d-flex justify-content-center align-items-center">
         {
-            bookAdded ?<> <h1 className="text-warning">New Book Added Successfully!</h1>
-            <div className="btn btn-primary" onClick={()=>{
+            bookAdded ?<> <h1 className="text-dark ">New Book Added Successfully!</h1> 
+            <div className="btn btn-primary border" onClick={()=>{
               setbookAdded(false)
-            }}>Add Book </div></>
+            }}>Add More</div></>
              : 
+             
             <form className="" onSubmit={handleSubmit(onSubmit)}>
-    <input className="form-control" name="name" placeholder="name" ref={register} required />
-    <input className="form-control" name="author" placeholder="author" ref={register} required/>
-    <input className="form-control" name="cost" placeholder="price" ref={register} required />
+    <input className="form-control mb-2" name="name" placeholder="name" ref={register} required />
+    <input className="form-control mb-2" name="author" placeholder="author" ref={register} required/>
+    <input className="form-control mb-2" name="cost" placeholder="price" ref={register} required />
     <br />
-    <input className="text-light form-control-file"  name="exampleRequired" type="file" onChange={handleImage} required/>
+    <input className="text-dark form-control-file"  name="exampleRequired" type="file" onChange={handleImage} required/>
     <br /> <input className="form-control bg-primary text-light" type="submit" />
   </form>
         }
       </div>
+
     </div>
   );
 };

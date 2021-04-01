@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -12,7 +13,6 @@ import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
 import firebaseConfig from './firebaseConfig';
 import bgImg from './loginBG.jpg';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,7 +91,7 @@ const handleGoogleSignIn = () => {
           <br/>
           </Typography>
           
-          <button onClick={handleGoogleSignIn}> GOOGLE</button>
+          <button className="btn btn-success px-3 mt-3" onClick={handleGoogleSignIn}> <KeyboardArrowRightIcon/>GOOGLE</button>
         </div>
       </Grid>
     </Grid>

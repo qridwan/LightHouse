@@ -1,20 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { UserContext } from "../../App";
+import './Order.css';
+
 
 const Order = () => {
-  const [user, setUser] = useContext(UserContext);
-  console.log(user);
+  let [loading, setLoading] = useState(true);
+  const [user] = useContext(UserContext);
   const mail = user.email;
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/order/" + mail)
+    fetch("https://lighthouse-222.herokuapp.com/order/" + mail)
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => {
+        setLoading(false)
+        setOrders(data)});
   }, []);
-  console.log(orders);
   return (
-    <div>
-      <table class="table container">
+    <div className="order text-light pb-5">
+      <div className="container">
+        <h3 className="p-3 text-center">{user.name}, previously you ordered,</h3>
+      </div>
+      <table className="table container text-light">
         <thead>
           <tr>
             <th scope="col">Books</th>
@@ -25,7 +32,7 @@ const Order = () => {
         </thead>
         <tbody>
           {orders.map((obj) => (
-            <tr>
+            <tr key={obj._id}>
               <th scope="row">{obj.name}</th>
               <td>{obj.author} </td>
               <td>$ {obj.price} </td>
@@ -34,6 +41,7 @@ const Order = () => {
           ))}
         </tbody>
       </table>
+      <div className="text-center m-4"> {loading && <ClipLoader color="white"> loading={loading} size={300} ></ClipLoader>}</div>
     </div>
   );
 };

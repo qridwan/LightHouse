@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route, Switch
 } from "react-router-dom";
-import AddBook from "./Components/AddBook/AddBook";
 import Admin from "./Components/Admin/Admin";
 import CheckOut from "./Components/CheckOut/CheckOut";
 import Home from "./Components/Home/Home";
@@ -34,17 +33,17 @@ function App() {
           <PrivateRoute path="/checkout/:id">
             <CheckOut/>
           </PrivateRoute>
-          <Route path="/add-book">
-            <AddBook /> 
-          </Route>
-          <Route path="/order">
+          <PrivateRoute path="/order">
             <Order /> 
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/admin">
             <Admin /> 
           </PrivateRoute>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route path="*">
+
           </Route>
         </Switch>
       </div>

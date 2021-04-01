@@ -3,15 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
+import './Checkout.css';
 
 const CheckOut = () => {
   const [user] = useContext(UserContext);
   const { id } = useParams();
-  const [order, setOrder] = useState({});
 
   const [bookInfo, setBookInfo] = useState({});
   useEffect(() => {
-    fetch("http://localhost:4000/book/" + id)
+    fetch("https://lighthouse-222.herokuapp.com/book/" + id)
       .then((res) => res.json())
       .then((data) => setBookInfo(data));
   }, []);
@@ -33,8 +33,8 @@ const CheckOut = () => {
       totalCost: totalCost,
       date: orderedDate,
     };
-    console.log(orderInfo);
-    const url = `http://localhost:4000/placeOrder`;
+
+    const url = `https://lighthouse-222.herokuapp.com/placeOrder`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -50,16 +50,16 @@ const CheckOut = () => {
   };
 
   return !placeOrder ? (
-    <div>
-      <div className="mt-5 row text-center">
+    <div className='checkout'>
+      <div className="pt-2 row text-center">
         <div className="col">
-          <h3 className="text-success font-weight-bolder">
+          <h3 className="text-light font-weight-bolder">
             Hello {user.name}! <br />
-            <span className="text-primary"> Checkout Your Selected Item</span>
+            <span className=""> Checkout Your Selected Item</span>
           </h3>
         </div>
       </div>
-      <table class="table container">
+      <table className="table container text-light">
         <thead>
           <tr>
             <th scope="col">Item</th>
@@ -77,18 +77,18 @@ const CheckOut = () => {
 
           <tr>
             <th scope="row"></th>
-            <td colspan="1"> ✔Shipping</td>
+            <td colSpan="1"> ✔Shipping</td>
             <td>$ 20</td>
           </tr>
           <tr>
             <th scope="row"></th>
-            <td colspan="1">Total Cost (including 10% vat)</td>
+            <td colSpan="1">Total Cost (including 10% vat)</td>
             <td>${totalCost}</td>
           </tr>
           <tr>
             <th scope="row"></th>
             <td></td>
-            <td colspan="1">
+            <td colSpan="1">
               <Button
                 onClick={handleOrder}
                 variant="contained"
@@ -122,9 +122,7 @@ const CheckOut = () => {
               Go To ORDER
             </Link>
           </Button>
-          <Button variant="contained" 
-          className="ml-2"
-          color="primary">
+          <Button variant="contained" className="ml-2" color="primary">
             <Link
               className="text-white"
               style={{ textDecoration: "none" }}

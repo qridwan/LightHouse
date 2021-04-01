@@ -1,0 +1,11 @@
+.checkout {
+  background-image: url("../../images/logo/checkoutBG.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.checkout tr {
+  background-color: rgba(10, 7, 7, 0.616);
+}

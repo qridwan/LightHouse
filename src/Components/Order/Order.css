@@ -1,0 +1,12 @@
+.order {
+  background-image: url("../../images/logo/orderBG.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.order tr {
+  background-color: rgba(105, 8, 8, 0.548);
+  border-bottom: 2px solid white;
+}

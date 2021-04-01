@@ -1,11 +1,15 @@
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import TuneIcon from '@material-ui/icons/Tune';
+import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../App';
 import AddBook from '../AddBook/AddBook';
+import ManageBooks from '../ManageBooks/ManageBooks';
 import './Admin.css';
 
-
 const Admin = () => { 
-    const [user, setUser] = useContext(UserContext)
+    const [user] = useContext(UserContext)
     const [condition, setCondition] = useState({goto: ""})
     const gotoAddBooks = () => {
         setCondition({goto: "addBook"})
@@ -15,34 +19,34 @@ const Admin = () => {
     }
     return (
         <>
-        <div class="sidebar-container">
-  <div class="sidebar-logo">
-    Admin Panel
+        <div className="sidebar-container">
+  <div className="sidebar-logo">
+    <img src={user.photo} alt="Snap" height="80" className="d-block border rounded"></img>
+    <h5> {user.name} <VerifiedUserOutlinedIcon className="text-success"/> </h5>
   </div> 
-  <ul class="sidebar-navigation">
+  <ul className="sidebar-navigation">
     <li  onClick={gotoManageBooks}>
       <h6 >
-         ManageBooks
+      <TuneIcon/>   Manage Books
       </h6>
     </li>
     <li onClick={gotoAddBooks}>
       <h6 >
-         Add New Books
+      <AddIcon/>  Add New Books
       </h6>
     </li>
     <li>
       <h6 >
-         Edit Books
+      <EditIcon/>   Edit Books
       </h6>
     </li>
   </ul>
 </div>
 
-<div class="content-container">
-    <div className="text-center text-white">
-            <img src={user.photo} alt="Snap" height="100" className="border rounded"></img>
-            <h4>Hi {user.name}! <br/><span  className="text-warning">WelCome to Admin panel</span></h4></div>
-    
+<div className="content-container">
+    {
+        condition.goto === 'manageBook' && <ManageBooks />
+    }
     {
         condition.goto === 'addBook' && <AddBook />
     }
