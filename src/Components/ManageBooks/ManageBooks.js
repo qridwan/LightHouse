@@ -5,14 +5,15 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "./ManageBooks.css";
 
 const ManageBooks = () => {
-    let [loading, setLoading] = useState(true);
+  let [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
   useEffect(() => {
     fetch("https://lighthouse-222.herokuapp.com/allbooks")
       .then((response) => response.json())
       .then((data) => {
-        setLoading(false) 
-        setBooks(data)});
+        setLoading(false);
+        setBooks(data);
+      });
   }, [books]);
 
   function handleDelete(id, event) {
@@ -27,10 +28,9 @@ const ManageBooks = () => {
       });
   }
   return (
-    <div  className="table-field">
-        
+    <div className="table-field">
       <table className="table container mr-2">
-        <thead style={{width: '90%'}} >
+        <thead style={{ width: "90%" }}>
           <tr className="bg-light ">
             <th scope="col">Book</th>
             <th scope="col">Author</th>
@@ -42,13 +42,12 @@ const ManageBooks = () => {
           {books.map((obj) => (
             <tr className="text-black" key={obj._id}>
               <th scope="row">
-                
                 <img
                   src={obj.image}
                   alt="img"
                   height="80px"
                   className="d-block"
-                  style={{margin: "0 15px"}}
+                  style={{ margin: "0 15px" }}
                 />
                 {obj.name}
               </th>
@@ -69,7 +68,15 @@ const ManageBooks = () => {
           ))}
         </tbody>
       </table>
-      <div className="text-center m-4"> {loading && <ClipLoader color="purple"> loading={loading} size={300} ></ClipLoader>}</div>
+      <div className="text-center m-4">
+        {" "}
+        {loading && (
+          <ClipLoader color="purple">
+            {" "}
+            loading={loading} size={300} >
+          </ClipLoader>
+        )}
+      </div>
     </div>
   );
 };

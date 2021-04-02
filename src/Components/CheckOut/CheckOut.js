@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
-import './Checkout.css';
+import "./Checkout.css";
 
 const CheckOut = () => {
   const [user] = useContext(UserContext);
@@ -50,7 +50,7 @@ const CheckOut = () => {
   };
 
   return !placeOrder ? (
-    <div className='checkout'>
+    <div className="checkout">
       <div className="pt-2 row text-center">
         <div className="col">
           <h3 className="text-light font-weight-bolder">

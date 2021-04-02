@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { UserContext } from "../../App";
-import './Order.css';
-
+import "./Order.css";
 
 const Order = () => {
   let [loading, setLoading] = useState(true);
@@ -13,13 +12,16 @@ const Order = () => {
     fetch("https://lighthouse-222.herokuapp.com/order/" + mail)
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false)
-        setOrders(data)});
+        setLoading(false);
+        setOrders(data);
+      });
   }, []);
   return (
     <div className="order text-light pb-5">
       <div className="container">
-        <h3 className="p-3 text-center">{user.name}, previously you ordered,</h3>
+        <h3 className="p-3 text-center">
+          {user.name}, previously you ordered,
+        </h3>
       </div>
       <table className="table container text-light">
         <thead>
@@ -41,7 +43,15 @@ const Order = () => {
           ))}
         </tbody>
       </table>
-      <div className="text-center m-4"> {loading && <ClipLoader color="white"> loading={loading} size={300} ></ClipLoader>}</div>
+      <div className="text-center m-4">
+        {" "}
+        {loading && (
+          <ClipLoader color="white">
+            {" "}
+            loading={loading} size={300} >
+          </ClipLoader>
+        )}
+      </div>
     </div>
   );
 };
