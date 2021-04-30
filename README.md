@@ -2,15 +2,13 @@
 
 # Created by, Mohammad Ridwanul Alam
 
-## -Assignment No. 10 [Complete Web Development Courses ; offered by 'Programming Hero' ]
-
 # Main Features:
 
 This is a full-stack, #MERN_project.
-In the *HOME(project-component) Page lots of book displayed which is loaded from the mongodb database.
-I deployed login authentication in this website. An unknown user only have access to the home page.
-Logged in user have access to go for *ORDER(project-component) , and also can perform to play an \*ADMIN(project-component)-role where he/she can manage the product, situated in the database.
-SO it is compolsury to sign(google signin) in for the user to enjoy the whole funtionality of this application.
+- In the *HOME(project-component) Page lots of book displayed which is loaded from the mongodb database.
+- I deployed login authentication in this website. An unknown user only have access to the home page.
+- Logged in user have access to go for *ORDER(project-component) , and also can perform to play an \*ADMIN(project-component)-role where he/she can manage the product, situated in the database.
+- SO it is compolsury to sign(google signin) in for the user to enjoy the whole funtionality of this application.
 
 # Main Dependencies are
 
@@ -30,6 +28,6 @@ Theres lot of struggles and ups & downs behind the project establishment. After 
 
 ---
 
-# Here's the Live site link: >> https://lighthouse-bookshelves.web.app/
+# Go to the [Live site](https://lighthouse-bookshelves.web.app/)
 
                                         😊THANK YOU😊
